@@ -1,0 +1,51 @@
+.root {
+    position: relative;
+    max-width: calc(80% - 20px);
+    box-sizing: border-box;
+    height: calc(100vh - 20px);
+    flex: 1 1 auto;
+    margin: 10px;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.1);
+    overflow: auto;
+    line-height: 1.5;
+}
+
+.title {
+    position: sticky;
+    top: 0;
+    left: 0;
+    background: white;
+    line-height: 29px;
+    border-bottom: 1px solid var(--main-border-color);
+    font-size: 13px;
+    box-sizing: border-box;
+    padding: 0 0 0 10px;
+}
+
+.content {
+    padding: 0 20px 20px;
+    margin-bottom: 50px;
+}
+
+.edit-link {
+    line-height: 30px;
+    display: block;
+    position: fixed;
+    z-index: 1;
+    padding: 0 15px;
+    margin: 30px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1);
+    bottom: 0;
+    right: 0;
+    border-radius: 5px;
+    background-color: var(--accent-background-color);
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.6);
+
+    &:active {
+        transform: scale(0.98);
+    }
+}
