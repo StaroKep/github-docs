@@ -4,4 +4,6 @@ export interface GitHubDomains {
     isGitHubQueryParams?: boolean;
 }
 
-export type ApplicationState = GitHubDomains;
+export type ApplicationState = GitHubDomains & {
+    files: string[],
+};

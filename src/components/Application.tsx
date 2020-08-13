@@ -1,10 +1,11 @@
 import React, { FunctionComponent, useEffect, useState } from 'react';
-import { HashRouter, Route, Redirect } from 'react-router-dom';
+import { HashRouter, Route } from 'react-router-dom';
 import cn from 'classnames/bind';
 
 import { Search } from 'src/components/Search';
 import { Content } from 'src/components/Content';
 import { GitHubDomains } from 'src/components/GitHubDomains';
+import { CacheStatus } from 'src/components/CacheStatus';
 
 import { parseQueryParams } from 'src/services/queryParams';
 
@@ -16,6 +17,7 @@ const cx = cn.bind(styles);
 
 export const Application: FunctionComponent = () => {
     const [state, setState] = useState<ApplicationState>({
+        files: [],
         ...parseQueryParams(),
     });
 
@@ -27,7 +29,9 @@ export const Application: FunctionComponent = () => {
         <div className={cx('root')}>
             <HashRouter hashType="noslash">
                 <Route path="/:user/:repo">
-                    <Search state={state} />
+                    <Search state={state}>
+                        <CacheStatus state={state} setState={setState} />
+                    </Search>
                     <Content state={state} />
                 </Route>
 

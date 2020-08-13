@@ -44,6 +44,7 @@
     "dependencies": {
         "@types/lodash": "^4.14.159",
         "classnames": "^2.2.6",
+        "dexie": "^3.0.2",
         "lodash": "^4.17.19",
         "query-string": "6.13.1",
         "react": "16.13.1",

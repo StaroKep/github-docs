@@ -14,11 +14,12 @@ import { SearchProps } from './Search.types';
 
 import * as styles from './Search.pcss';
 import { useParams } from 'react-router-dom';
+import {findInFiles} from "src/services/cache";
 
 const cx = cn.bind(styles);
 
 export const Search: FunctionComponent<SearchProps> = props => {
-    const { state } = props;
+    const { state, children } = props;
     const { user, repo } = useParams();
 
     const [loading, onLoading] = useState(false);
@@ -29,15 +30,21 @@ export const Search: FunctionComponent<SearchProps> = props => {
         {
             onLoading(true);
             onResults([]);
-            searchCode({
-                user,
-                repo,
-                state,
-                request: value,
-                onSuccess: data => {
-                    onLoading(false);
-                    onSearchCodeSuccess(data, onResults);
-                },
+            // searchCode({
+            //     user,
+            //     repo,
+            //     state,
+            //     request: value,
+            //     onSuccess: data => {
+            //         onLoading(false);
+            //         onSearchCodeSuccess(data, onResults);
+            //     },
+            // })
+            onLoading(false);
+            findInFiles(value, data => {
+                onLoading(false);
+                console.log(data);
+                onSearchCodeSuccess(data, onResults);
             })
         },
         500
@@ -75,6 +82,7 @@ export const Search: FunctionComponent<SearchProps> = props => {
                     </a>
                 ))}
                 {resultsText}
+                {children}
             </div>
         </div>
     );
