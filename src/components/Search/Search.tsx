@@ -18,6 +18,7 @@ import { useParams } from 'react-router-dom';
 const cx = cn.bind(styles);
 
 export const Search: FunctionComponent<SearchProps> = props => {
+    const { state } = props;
     const { user, repo } = useParams();
 
     const [loading, onLoading] = useState(false);
@@ -31,6 +32,7 @@ export const Search: FunctionComponent<SearchProps> = props => {
             searchCode({
                 user,
                 repo,
+                state,
                 request: value,
                 onSuccess: data => {
                     onLoading(false);

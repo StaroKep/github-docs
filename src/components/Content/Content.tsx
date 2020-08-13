@@ -3,15 +3,17 @@ import ReactMarkdown from 'react-markdown';
 import { useLocation, useParams } from 'react-router-dom';
 import cn from 'classnames/bind';
 
+import { github } from 'src/utils/githubDomains';
+import { getFileContent } from 'src/dataProvider/repos/contents';
+
 import { ContentProps } from './Content.types';
 
 import * as styles from './Content.pcss';
-import { getFileContent } from 'src/dataProvider/repos/contents';
-import {GITHUB} from "src/constants/main";
 
 const cx = cn.bind(styles);
 
 export const Content: FunctionComponent<ContentProps> = props => {
+    const { state } = props;
     const { user, repo } = useParams();
     const { pathname } = useLocation();
 
@@ -30,6 +32,7 @@ export const Content: FunctionComponent<ContentProps> = props => {
         getFileContent({
             user,
             repo,
+            state,
             filePath,
             onSuccess: onContent,
             onError: () => onContent(`File ${filePath} doesn't exist`),
@@ -38,11 +41,23 @@ export const Content: FunctionComponent<ContentProps> = props => {
 
     return (
         <div className={cx('root')}>
-            <div className={cx('title')}>File: {filePath.replace('.md', '').replace('/', ' / ')}</div>
-            <div className={cx('content')}>
-                <ReactMarkdown linkTarget="_blank" escapeHtml={false}>{content || Content}</ReactMarkdown>
+            <div className={cx('title')}>
+                File: {filePath.replace('.md', '').replace('/', ' / ')}
             </div>
-            <a target="_blank" className={cx('edit-link')} href={`${GITHUB}/${user}/${repo}/edit/master/${filePath}`}>Edit file</a>
+            <div className={cx('content')}>
+                <ReactMarkdown linkTarget="_blank" escapeHtml={false}>
+                    {content || Content}
+                </ReactMarkdown>
+            </div>
+            <a
+                target="_blank"
+                className={cx('edit-link')}
+                href={`${github(
+                    state
+                )}/${user}/${repo}/edit/master/${filePath}`}
+            >
+                Edit file
+            </a>
         </div>
     );
 };

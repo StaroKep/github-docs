@@ -1,5 +1,5 @@
 import {ApplicationState} from "src/state/types";
 
-export interface SearchProps {
+export interface GitHubDomainsProps {
     state: ApplicationState;
 }
