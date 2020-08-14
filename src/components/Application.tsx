@@ -36,7 +36,7 @@ export const Application: FunctionComponent = () => {
 
                 <Route path="/:user/:repo">
                     <Search state={state}>
-                        <CacheStatus state={state} setState={setState} />
+                        {/*<CacheStatus state={state} setState={setState} />*/}
                     </Search>
                     <Content state={state} />
                 </Route>
@@ -45,7 +45,7 @@ export const Application: FunctionComponent = () => {
                     <Home state={state} setState={setState} />
                 </Route>
             </HashRouter>
-            <GitHubDomains state={state} />
+            {/*<GitHubDomains state={state} />*/}
         </div>
     );
 };

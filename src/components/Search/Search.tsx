@@ -2,10 +2,12 @@ import React, {
     FunctionComponent,
     useCallback,
     useState,
-    FormEvent,
+    FormEvent, useEffect,
 } from 'react';
 import debounce from 'lodash/debounce';
 import cn from 'classnames/bind';
+
+import { FaSearch } from 'react-icons/fa';
 
 import { searchCode } from 'src/dataProvider/search/code';
 
@@ -24,6 +26,15 @@ export const Search: FunctionComponent<SearchProps> = props => {
 
     const [loading, onLoading] = useState(false);
     const [results, onResults] = useState<string[]>([]);
+    const [isVisible, setIsVisible] = useState(false);
+
+    useEffect(() => {
+        window.addEventListener('keydown', (event) => {
+            if  (event.key === 'Escape') {
+                setIsVisible(false);
+            }
+        });
+    }, [])
 
     const delayedSearchCode = debounce(
         value =>
@@ -61,22 +72,30 @@ export const Search: FunctionComponent<SearchProps> = props => {
         resultsText = 'No searching results...';
     }
 
+    const onSearchInputClick = useCallback(() => {
+        setIsVisible(true);
+    }, [])
+
     return (
-        <div className={cx('root')}>
-            <div className={cx('search-form')}>
+        <div className={cx('root', isVisible && 'root_visible')}>
+            <div className={cx('search-form', isVisible && 'search-form_inside')}>
+                <FaSearch className={cx('search-icon')} />
                 <input
                     className={cx('search-input')}
                     onInput={onInput}
+                    onClick={onSearchInputClick}
                     type="text"
-                    placeholder="Search phrase..."
+                    placeholder="Enter search request"
                 />
             </div>
             <div className={cx('results')}>
+                <h3 className={cx('results-title')}>RESULTS</h3>
                 {results.map(result => (
                     <a
                         className={cx('result')}
                         key={result}
                         href={`#${user}/${repo}/${result}`}
+                        title={result}
                     >
                         {result.replace('.md', '')}
                     </a>
