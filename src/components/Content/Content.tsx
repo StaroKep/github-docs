@@ -43,6 +43,7 @@ export const Content: FunctionComponent<ContentProps> = props => {
         <div className={cx('root')}>
             <div className={cx('title')}>
                 File: {filePath.replace('.md', '').replace('/', ' / ')}
+                <a className={cx('close-button')} href="/">×</a>
             </div>
             <div className={cx('content')}>
                 <ReactMarkdown linkTarget="_blank" escapeHtml={false}>

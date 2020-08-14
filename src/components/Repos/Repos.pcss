@@ -1,0 +1,134 @@
+.root {
+    padding: 0 20px;
+    margin: 15px 0 20px 0;
+    width: 300px;
+    max-width: 100%;
+    overflow: auto;
+}
+
+.title {
+    margin: 0 0 10px 0;
+    position: sticky;
+    top: 0;
+    padding-left: 2px;
+    background: white;
+    border-bottom: 2px solid var(--main-border-color);
+}
+
+.add-repo-form {
+    display: flex;
+    flex-direction: column;
+    border: 2px solid var(--main-border-color);
+    border-radius: var(--main-border-radius);
+    padding: 20px;
+}
+
+.input-wrapper {
+    position: relative;
+    margin-bottom: 5px;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
+.label {
+    background-color: white;
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 13px;
+    line-height: 2px;
+}
+
+.input {
+    width: 100%;
+    box-sizing: border-box;
+    border: 2px solid var(--main-border-color);
+    border-radius: var(--main-border-radius);
+    font-size: 15px;
+    line-height: 40px;
+    padding: 0 10px;
+    outline: none;
+    background-color: white;
+
+    &:focus {
+        border-color: var(--blue-accent);
+    }
+}
+
+.top-menu {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 10px;
+}
+
+.add-repo-caption {
+    margin: 0;
+}
+
+.button {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    border: 2px solid var(--main-border-color);
+    border-radius: 100%;
+    font-size: 21px;
+    background-color: var(--blue-accent);
+    color: white;
+    cursor: pointer;
+    outline: none;
+    transition-duration: .05s;
+    transition-property: transform;
+    font-weight: 500;
+    margin-right: 10px;
+
+    &:active {
+        transform: scale(0.98);
+    }
+}
+
+.repos-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.repo {
+    position: relative;
+    border: 2px solid var(--main-border-color);
+    border-radius: var(--main-border-radius);
+    box-sizing: border-box;
+    padding: 20px;
+    margin-bottom: 10px;
+}
+
+.repo-caption {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.repo-github {
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 11px;
+}
+
+.remove-repo-button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: white;
+    border: none;
+    width: 29px;
+    height: 29px;
+    font-size: 21px;
+    color: rgba(0, 0, 0, 0.6);
+    cursor: pointer;
+    outline: none;
+
+    &:active {
+        transform: scale(0.98);
+    }
+}

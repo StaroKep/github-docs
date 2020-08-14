@@ -6,8 +6,11 @@ import { Search } from 'src/components/Search';
 import { Content } from 'src/components/Content';
 import { GitHubDomains } from 'src/components/GitHubDomains';
 import { CacheStatus } from 'src/components/CacheStatus';
+import { Navigation } from 'src/components/Navigation';
+import { Home } from 'src/components/Home';
 
 import { parseQueryParams } from 'src/services/queryParams';
+import {getLocalStoreRepositories} from "src/services/localStore/repositories";
 
 import { ApplicationState } from 'src/state/types';
 
@@ -18,6 +21,7 @@ const cx = cn.bind(styles);
 export const Application: FunctionComponent = () => {
     const [state, setState] = useState<ApplicationState>({
         files: [],
+        reposList: getLocalStoreRepositories(),
         ...parseQueryParams(),
     });
 
@@ -28,6 +32,8 @@ export const Application: FunctionComponent = () => {
     return (
         <div className={cx('root')}>
             <HashRouter hashType="noslash">
+                <Navigation />
+
                 <Route path="/:user/:repo">
                     <Search state={state}>
                         <CacheStatus state={state} setState={setState} />
@@ -36,7 +42,7 @@ export const Application: FunctionComponent = () => {
                 </Route>
 
                 <Route exact path="/">
-                    Path must be like "userName/repoName"
+                    <Home state={state} setState={setState} />
                 </Route>
             </HashRouter>
             <GitHubDomains state={state} />
