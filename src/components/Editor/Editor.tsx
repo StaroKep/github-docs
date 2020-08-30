@@ -17,6 +17,7 @@ import * as styles from './Editor.pcss';
 import ReactMarkdown from 'react-markdown';
 import set = Reflect.set;
 import { github } from 'src/utils/githubDomains';
+import { Navigation } from 'src/components/Navigation';
 
 const cx = cn.bind(styles);
 
@@ -111,39 +112,42 @@ export const Editor: FunctionComponent<EditorProps> = props => {
     }, [content]);
 
     return (
-        <div className={cx('root', isPreview && 'root_preview')}>
-            <div className={cx('menu')}>
-                <button onClick={onButtonClick} className={cx('preview')}>
-                    {isPreview ? 'Edit' : 'Preview'}
-                </button>
-                <a
-                    onMouseEnter={onMouseEnter}
-                    target="_blank"
-                    className={cx('edit-link')}
-                    href={`${github(
-                        state
-                    )}/${user}/${repo}/edit/master/${filePath}`}
-                >
-                    Save changes
-                </a>
-                <Link to={`/${user}/${repo}/${filePath}`}>X</Link>
-            </div>
-
-            {content && !isPreview && (
-                <textarea
-                    onInput={onTextAreaInput}
-                    className={cx('textarea')}
-                    defaultValue={content}
-                />
-            )}
-            {isPreview && (
-                <div className={cx('content')}>
-                    <ReactMarkdown linkTarget="_blank" escapeHtml={false}>
-                        {content}
-                    </ReactMarkdown>
+        <>
+            <Navigation user={user} repo={repo} state={state} />
+            <div className={cx('root', isPreview && 'root_preview')}>
+                <div className={cx('menu')}>
+                    <button onClick={onButtonClick} className={cx('preview')}>
+                        {isPreview ? 'Edit' : 'Preview'}
+                    </button>
+                    <a
+                        onMouseEnter={onMouseEnter}
+                        target="_blank"
+                        className={cx('edit-link')}
+                        href={`${github(
+                            state
+                        )}/${user}/${repo}/edit/master/${filePath}`}
+                    >
+                        Save changes
+                    </a>
+                    <Link to={`/${user}/${repo}/${filePath}`}>X</Link>
                 </div>
-            )}
-        </div>
+
+                {content && !isPreview && (
+                    <textarea
+                        onInput={onTextAreaInput}
+                        className={cx('textarea')}
+                        defaultValue={content}
+                    />
+                )}
+                {isPreview && (
+                    <div className={cx('content')}>
+                        <ReactMarkdown linkTarget="_blank" escapeHtml={false}>
+                            {content}
+                        </ReactMarkdown>
+                    </div>
+                )}
+            </div>
+        </>
     );
 };
 

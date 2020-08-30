@@ -34,7 +34,6 @@ export const Application: FunctionComponent = () => {
     return (
         <div className={cx('root')}>
             <HashRouter hashType="noslash">
-                <Navigation />
 
                 <Switch>
                     <Route path="/editor/:user/:repo">

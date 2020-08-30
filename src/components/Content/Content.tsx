@@ -9,6 +9,7 @@ import { getFileContent } from 'src/dataProvider/repos/contents';
 import { ContentProps } from './Content.types';
 
 import * as styles from './Content.pcss';
+import { Navigation } from 'src/components/Navigation';
 
 const cx = cn.bind(styles);
 
@@ -40,26 +41,30 @@ export const Content: FunctionComponent<ContentProps> = props => {
     }, [filePath]);
 
     return (
-        <div className={cx('root')}>
-            <div className={cx('title')}>
-                File: {filePath.replace('.md', '').replace('/', ' / ')}
-                <a className={cx('close-button')} href="/">
-                    ×
-                </a>
+        <>
+            <Navigation user={user} repo={repo} state={state} />
+
+            <div className={cx('root')}>
+                <div className={cx('title')}>
+                    File: {filePath.replace('.md', '').replace('/', ' / ')}
+                    <a className={cx('close-button')} href="/">
+                        ×
+                    </a>
+                </div>
+                <div className={cx('content')}>
+                    <ReactMarkdown linkTarget="_blank" escapeHtml={false}>
+                        {content || Content}
+                    </ReactMarkdown>
+                </div>
+                <Link
+                    target="_blank"
+                    className={cx('edit-link')}
+                    to={`/editor/${user}/${repo}/${filePath}`}
+                >
+                    Edit file
+                </Link>
             </div>
-            <div className={cx('content')}>
-                <ReactMarkdown linkTarget="_blank" escapeHtml={false}>
-                    {content || Content}
-                </ReactMarkdown>
-            </div>
-            <Link
-                target="_blank"
-                className={cx('edit-link')}
-                to={`/editor/${user}/${repo}/${filePath}`}
-            >
-                Edit file
-            </Link>
-        </div>
+        </>
     );
 };
 
