@@ -23,7 +23,7 @@ export function getRepoFiles(params: TreesParams) {
             const pathsList = tree.map((element: any) => element.path);
             const markdownPaths = pathsList.filter((element: string) => {
                 return element.includes('.md');
-            })
+            });
 
             console.log(markdownPaths);
             if (tree) {

@@ -14,8 +14,10 @@ export const GitHubDomains: FunctionComponent<GitHubDomainsProps> = props => {
 
     return (
         <div className={cx('root')}>
-            GitHub domains:<br/>
-            {github(state)}<br/>
+            GitHub domains:
+            <br />
+            {github(state)}
+            <br />
             {githubAPI(state)}
         </div>
     );

@@ -1,1 +1,4 @@
-export { getLocalStoreGitHubDomains, setLocalStoreGitHubDomains } from './githubDomains';
+export {
+    getLocalStoreGitHubDomains,
+    setLocalStoreGitHubDomains,
+} from './githubDomains';

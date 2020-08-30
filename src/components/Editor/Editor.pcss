@@ -1,0 +1,44 @@
+.root {
+    position: relative;
+    max-width: calc(80% - 20px);
+    box-sizing: border-box;
+    height: calc(100vh - 20px);
+    flex: 1 1 auto;
+    margin: 10px;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    line-height: 1.5;
+
+    &_preview {
+        overflow: auto;
+    }
+}
+
+.textarea {
+    border: none;
+    width: 100%;
+    height: calc(100% - 20px);
+    outline: none;
+    font-size: 13px;
+    line-height: 1.5;
+    font-family: 'Roboto Mono', monospace;
+    box-sizing: border-box;
+    padding: 20px;
+    resize: none;
+}
+.content {
+    padding: 0 20px 20px;
+    margin-bottom: 50px;
+
+    p {
+        white-space: pre-wrap;
+    }
+}
+
+.menu {
+    position: sticky;
+    height: 20px;
+    border-bottom: 2px solid var(--main-border-color);
+}

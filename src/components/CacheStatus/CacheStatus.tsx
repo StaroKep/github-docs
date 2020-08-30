@@ -1,10 +1,15 @@
-import React, {FunctionComponent, useCallback, useEffect, useState} from 'react';
+import React, {
+    FunctionComponent,
+    useCallback,
+    useEffect,
+    useState,
+} from 'react';
 import cn from 'classnames/bind';
 import { useParams } from 'react-router-dom';
 
 import { getLastCommitSHA } from 'src/dataProvider/repos/commits';
 import { getRepoFiles } from 'src/dataProvider/repos/git/trees';
-import cacheData, {findInFiles} from 'src/services/cache';
+import cacheData, { findInFiles } from 'src/services/cache';
 
 import { CacheStatusProps } from './CacheStatus.types';
 
@@ -45,7 +50,7 @@ export const CacheStatus: FunctionComponent<CacheStatusProps> = props => {
     }, [commitSHA]);
 
     const onCacheButtonClick = useCallback(() => {
-        cacheData({repo, user, state, files});
+        cacheData({ repo, user, state, files });
     }, [files]);
 
     const qwe = useCallback(() => {

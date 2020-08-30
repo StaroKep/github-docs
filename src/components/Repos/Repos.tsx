@@ -9,9 +9,13 @@ import uniqWith from 'lodash/uniqWith';
 import isEqual from 'lodash/isEqual';
 import remove from 'lodash/remove';
 import cn from 'classnames/bind';
+import { FaSync } from 'react-icons/fa';
 
 import { GITHUB, GITHUB_API } from 'src/constants/main';
 
+import { Button, ButtonType } from 'src/components/Button';
+
+import { syncCacheWithRepo } from 'src/services/cache';
 import { setLocalStoreRepository } from 'src/services/localStore/repositories';
 
 import { Repository } from 'src/state/types';
@@ -142,6 +146,18 @@ export const Repos: FunctionComponent<ReposProps> = props => {
                                 <br />
                                 {githubApi}
                             </div>
+                            <Button
+                                type={ButtonType.CIRCLE}
+                                onClick={() => {
+                                    syncCacheWithRepo({
+                                        user,
+                                        repo: repoName,
+                                        state,
+                                    });
+                                }}
+                            >
+                                <FaSync />
+                            </Button>
                         </div>
                     );
                 })}

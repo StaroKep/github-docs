@@ -13,7 +13,9 @@ export function searchCode(params: SearchParams) {
         onError = () => {},
     } = params;
 
-    const requestURL = `${githubAPI(state)}${GitHubAPI.SEARCH_CODE}?q=repo:${user}/${repo} ${request}`;
+    const requestURL = `${githubAPI(state)}${
+        GitHubAPI.SEARCH_CODE
+    }?q=repo:${user}/${repo} ${request}`;
 
     fetch(requestURL)
         .then(result => result.json(), onError)

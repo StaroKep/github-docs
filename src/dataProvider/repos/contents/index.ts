@@ -14,7 +14,9 @@ export function getFileContent(params: ContentsParams) {
         onError = () => {},
     } = params;
 
-    const requestURL = `${githubAPI(state)}${GitHubAPI.REPOS}/${user}/${repo}/${GitHubAPI.CONTENTS}/${filePath}`;
+    const requestURL = `${githubAPI(state)}${GitHubAPI.REPOS}/${user}/${repo}/${
+        GitHubAPI.CONTENTS
+    }/${filePath}`;
 
     fetch(requestURL)
         .then(result => result.json())

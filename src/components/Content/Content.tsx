@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useEffect, useState } from 'react';
 import ReactMarkdown from 'react-markdown';
-import { useLocation, useParams } from 'react-router-dom';
+import { Link, useLocation, useParams } from 'react-router-dom';
 import cn from 'classnames/bind';
 
 import { github } from 'src/utils/githubDomains';
@@ -43,22 +43,22 @@ export const Content: FunctionComponent<ContentProps> = props => {
         <div className={cx('root')}>
             <div className={cx('title')}>
                 File: {filePath.replace('.md', '').replace('/', ' / ')}
-                <a className={cx('close-button')} href="/">×</a>
+                <a className={cx('close-button')} href="/">
+                    ×
+                </a>
             </div>
             <div className={cx('content')}>
                 <ReactMarkdown linkTarget="_blank" escapeHtml={false}>
                     {content || Content}
                 </ReactMarkdown>
             </div>
-            <a
+            <Link
                 target="_blank"
                 className={cx('edit-link')}
-                href={`${github(
-                    state
-                )}/${user}/${repo}/edit/master/${filePath}`}
+                to={`/editor/${user}/${repo}/${filePath}`}
             >
                 Edit file
-            </a>
+            </Link>
         </div>
     );
 };

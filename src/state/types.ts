@@ -12,7 +12,7 @@ export interface Repository {
 }
 
 export type ApplicationState = GitHubDomains & {
-    files: string[],
+    files: string[];
     reposList: Repository[];
 };
 

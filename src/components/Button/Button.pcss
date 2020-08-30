@@ -1,0 +1,27 @@
+.root {
+    background-color: var(--blue-accent);
+    align-items: center;
+    border: 2px solid var(--main-border-color);
+    border-radius: var(--main-border-radius);
+    cursor: pointer;
+    padding: 0 15px;
+    line-height: 30px;
+    box-sizing: border-box;
+    outline: none;
+
+    &_circle {
+        width: 30px;
+        height: 30px;
+        border-radius: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+        color: white;
+        font-size: 12px;
+    }
+
+    &:active {
+        transform: scale(0.98);
+    }
+}

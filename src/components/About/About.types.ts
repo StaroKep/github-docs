@@ -1,3 +1,1 @@
-export interface AboutProps {
-    
-}
+export interface AboutProps {}

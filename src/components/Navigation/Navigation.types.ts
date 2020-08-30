@@ -1,3 +1,1 @@
-export interface NavigationProps {
-    
-}
+export interface NavigationProps {}

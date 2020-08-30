@@ -1,5 +1,3 @@
-import {ComponentWithApplicationState} from "src/state/types";
+import { ComponentWithApplicationState } from 'src/state/types';
 
-export interface HomeProps extends ComponentWithApplicationState{
-
-}
+export interface HomeProps extends ComponentWithApplicationState {}

@@ -1,5 +1,5 @@
-import uniqWith from "lodash/uniqWith";
-import isEqual from "lodash/isEqual";
+import uniqWith from 'lodash/uniqWith';
+import isEqual from 'lodash/isEqual';
 
 import { Repository } from 'src/state/types';
 

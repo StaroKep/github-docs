@@ -1,7 +1,5 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, useCallback, useEffect } from 'react';
 import cn from 'classnames/bind';
-
-import { About } from 'src/components/About';
 
 import { NavigationProps } from './Navigation.types';
 
@@ -15,7 +13,6 @@ export const Navigation: FunctionComponent<NavigationProps> = props => {
             <div className={cx('title-wrapper')}>
                 <h3 className={cx('title')}>NAVIGATION PANEL</h3>
             </div>
-            <About />
         </div>
     );
 };
