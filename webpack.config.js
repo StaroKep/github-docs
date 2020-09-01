@@ -6,7 +6,7 @@ module.exports = {
     devServer: {
         port: 60010,
         historyApiFallback: true,
-        contentBase: path.resolve(__dirname, 'app'),
+        contentBase: path.resolve(__dirname, './'),
     },
     resolve: {
         extensions: [".ts", ".tsx", ".js", ".jsx"],
@@ -17,7 +17,7 @@ module.exports = {
     devtool: 'source-map',
     output: {
         filename: 'main.js',
-        path: path.resolve(__dirname, 'app'),
+        path: path.resolve(__dirname, './'),
     },
     module: {
         rules: [
