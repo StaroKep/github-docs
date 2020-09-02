@@ -8,6 +8,8 @@
     --blue-accent: rgb(25, 100, 200);
     --blue-accent-80: rgba(25, 100, 200, 0.8);
 
+    --inline-code-color: rgba(25, 75, 150, 0.8);
+
     --red-accent: rgb(200, 25, 80);
     --main-border-radius: 5px;
     --main-border-color: rgba(0, 0, 0, 0.05);
@@ -27,30 +29,40 @@ body {
     overflow: hidden;
 }
 
-code {
-    position: relative;
-    display: block;
-    white-space: pre-wrap;
-    padding: 50px 20px 20px;
-    margin: 10px 0;
-    border-radius: 5px;
-    background-color: var(--accent-background-color-transparent);
-    font-family: 'Roboto Mono', monospace;
-    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
+pre {
+    code {
+        position: relative;
+        display: block;
+        white-space: pre-wrap;
+        padding: 50px 20px 20px;
+        margin: 10px 0;
+        border-radius: 5px;
+        background-color: var(--accent-background-color-transparent);
+        font-family: 'Roboto Mono', monospace;
+        box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
+        color: inherit;
+        font-style: inherit;
 
-    &:before {
-        width: 100%;
-        line-height: 30px;
-        position: absolute;
-        top: 0;
-        left: 0;
-        content: 'Code';
-        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-        box-sizing: border-box;
-        padding: 0 10px;
-        color: rgba(0, 0, 0, 0.5);
-        font-style: italic;
+        &:before {
+            width: 100%;
+            line-height: 30px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            content: 'Code';
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            box-sizing: border-box;
+            padding: 0 10px;
+            color: rgba(0, 0, 0, 0.5);
+            font-style: italic;
+        }
     }
+}
+
+code {
+    color: var(--inline-code-color);
+    font-family: 'Roboto Mono', monospace;
+    font-style: italic;
 }
 
 a {
