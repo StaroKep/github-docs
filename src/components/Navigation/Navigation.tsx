@@ -48,6 +48,9 @@ export const Navigation: FunctionComponent<NavigationProps> = props => {
     return (
         <div className={cx('root')}>
             <div className={cx('title-wrapper')}>
+                <div className={cx('repo-name')}>
+                    {user} / {repo}
+                </div>
                 <h3 className={cx('title')}>NAVIGATION PANEL</h3>
                 <TreeMenu files={files} />
             </div>

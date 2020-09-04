@@ -67,7 +67,7 @@ code {
 
 a {
     text-decoration: none;
-    color: var(--blue-accent);
+    color: var(--main-color-text);
     transition: 0.1s color;
 
     &:hover {
@@ -75,15 +75,14 @@ a {
     }
 
     &:active {
-        color: var(--red-accent);
+        color: var(--blue-accent);
     }
 }
 
 details {
-    border: 2px solid var(--main-border-color);
-    border-radius: var(--main-border-radius);
     box-sizing: border-box;
-    padding: 10px;
+    margin: 0 0 8px 0;
+    padding: 0 0 0 15px;
 
     summary {
         cursor: pointer;
@@ -96,11 +95,13 @@ details {
         white-space: pre-wrap;
     }
 
+    li {
+        margin-left: 40px;
+    }
+
     &[open] > summary {
         padding-bottom: 10px;
-        margin-bottom: 10px;
-        border-bottom: 2px solid var(--main-border-color);
-        color: var(--blue-accent);
+        color: var(--main-color-text);
     }
 }
 
