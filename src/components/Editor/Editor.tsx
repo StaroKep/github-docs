@@ -116,20 +116,12 @@ export const Editor: FunctionComponent<EditorProps> = props => {
             <Navigation user={user} repo={repo} state={state} />
             <div className={cx('root', isPreview && 'root_preview')}>
                 <div className={cx('menu')}>
-                    <button onClick={onButtonClick} className={cx('preview')}>
-                        {isPreview ? 'Edit' : 'Preview'}
-                    </button>
-                    <a
-                        onMouseEnter={onMouseEnter}
-                        target="_blank"
-                        className={cx('edit-link')}
-                        href={`${github(
-                            state
-                        )}/${user}/${repo}/edit/master/${filePath}`}
-                    >
-                        Save changes
-                    </a>
-                    <Link to={`/${user}/${repo}/${filePath}`}>X</Link>
+                    <span>
+                        Edititng: {filePath.replace('.md', '').replace('/', ' / ')}
+                    </span>
+                    <Link to={`/${user}/${repo}/${filePath}`} className={cx('close-button')}>
+                        ×
+                    </Link>
                 </div>
 
                 {content && !isPreview && (
@@ -146,6 +138,21 @@ export const Editor: FunctionComponent<EditorProps> = props => {
                         </ReactMarkdown>
                     </div>
                 )}
+                <div className={cx('down-menu')}>
+                    <button onClick={onButtonClick} className={cx('preview')}>
+                        {isPreview ? 'Edit' : 'Preview'}
+                    </button>
+                    <a
+                        onMouseEnter={onMouseEnter}
+                        target="_blank"
+                        className={cx('edit-link')}
+                        href={`${github(
+                            state
+                        )}/${user}/${repo}/edit/master/${filePath}`}
+                    >
+                        Save changes
+                    </a>
+                </div>
             </div>
         </>
     );

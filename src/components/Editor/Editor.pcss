@@ -39,6 +39,51 @@
 
 .menu {
     position: sticky;
-    height: 20px;
+    height: 29px;
     border-bottom: 2px solid var(--main-border-color);
+    span {
+        font-size: 13px;
+        padding: 0 0 0 10px;
+    }
+}
+
+.close-button {
+    position: absolute;
+    width: 29px;
+    height: 29px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    right: 0;
+    font-size: 21px;
+    margin-bottom: 4px;
+}
+
+.down-menu {
+    position: sticky;
+    bottom: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: flex-end;
+    z-index: 1;
+
+    * {
+        line-height: 30px;
+        font-size: 16px;
+        display: block;
+        padding: 0 15px;
+        margin: 30px 30px 10px -10px;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+        background-color: var(--accent-background-color);
+        text-decoration: none;
+        color: rgba(0, 0, 0, 0.6);
+
+        &:active {
+            transform: scale(0.98);
+        }
+    }
 }
