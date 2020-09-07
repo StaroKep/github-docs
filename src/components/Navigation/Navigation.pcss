@@ -21,6 +21,11 @@
     font-size: 13px;
 }
 
+.title-wrapper {
+    height: calc(100vh - 44px);
+    overflow-x: scroll;
+}
+
 .title {
     position: relative;
     width: calc(100% - 60px);
@@ -43,6 +48,8 @@
     font-weight: normal;
     border-top: 2px solid var(--main-border-color);
     border-bottom: 2px solid var(--main-border-color);
+    /* z-index: 1; */
+    /* background: rgb(248, 249, 250); */
     a {
         color: var(--main-color-text);
         margin-right: 12px;

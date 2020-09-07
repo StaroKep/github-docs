@@ -2,31 +2,15 @@
     display: block;
     margin-left: 23px;
     svg {
-        margin: 0 7px -2px -4px;
+        margin: 0 7px 1px -4px;
+        font-size: 8px;
     }
 }
 
 details {
-    box-sizing: border-box;
-    margin: 0 0 13px 0;
-    padding: 0 0 0 17px;
-    
     summary {
-        cursor: pointer;
-        user-select: none;
-        outline: none;
-        color: var(--main-color-text);
         svg {
             margin: 0 2px -2px 2px;
         }
-    }
-
-    span {
-        white-space: pre-wrap;
-    }
-
-    &[open] > summary {
-        padding-bottom: 13px;
-        color: var(--main-color-text);
     }
 }
