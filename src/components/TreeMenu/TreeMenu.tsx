@@ -32,7 +32,7 @@ function flattenValues(obj) {
 export const TreeMenu: FunctionComponent<TreeMenuProps> = props => {
     const { files } = props;
 
-    return <div>
+    return <div className={cx('root')}>
         {flattenValues(files)}
     </div>;
 };

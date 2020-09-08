@@ -1,4 +1,6 @@
 import React, { FunctionComponent } from 'react';
+import { FaFolder } from 'react-icons/fa';
+import { BsCircleFill } from 'react-icons/bs';
 import cn from 'classnames/bind';
 
 import { DetailsProps } from './Details.types';
@@ -12,12 +14,14 @@ export const Details: FunctionComponent<DetailsProps> = props => {
 
     let content = children;
     if (elementsList) {
-        content = elementsList.map(element => <a className={cx('link')} href={element.path}>{element.title}</a>)
+        content = elementsList.map(element => <a className={cx('link')} href={element.path}><BsCircleFill />{element.title}</a>)
     }
 
     return (
         <details>
-            <summary>{title}</summary>
+            <summary>
+                <FaFolder/> {title}
+            </summary>
             {content}
         </details>
     );

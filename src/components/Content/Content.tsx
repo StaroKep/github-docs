@@ -57,7 +57,6 @@ export const Content: FunctionComponent<ContentProps> = props => {
                     </ReactMarkdown>
                 </div>
                 <Link
-                    target="_blank"
                     className={cx('edit-link')}
                     to={`/editor/${user}/${repo}/${filePath}`}
                 >
