@@ -2,7 +2,8 @@
 
 Interface for GitHub api ;)
 
-<dialog>
-<summury>title</summury>
-text
-</dialog>
+<details>
+  <summary>Dropdown</summary>
+  <span>Вот некоторый текст в выпадающем блоке</span>
+  <code>console.log('Вот еще некоторый код!')</code>
+</details>
