@@ -42,11 +42,6 @@ export const Editor: FunctionComponent<EditorProps> = props => {
             const isSaveCombination = event.metaKey && event.code === 'KeyS';
             const isExitCombination = event.metaKey && event.code === 'KeyD';
 
-            console.log(event.code);
-            if (event.metaKey && event.code !== 'MetaLeft') {
-                debugger;
-            }
-
             if (isSaveCombination || isExitCombination) {
                 event.preventDefault();
                 event.stopPropagation();
