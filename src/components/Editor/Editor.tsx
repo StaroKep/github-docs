@@ -10,6 +10,7 @@ import debounce from 'lodash/debounce';
 import { Link, useLocation, useParams } from 'react-router-dom';
 
 import { getFileContent } from 'src/dataProvider/repos/contents';
+import { pushFileContent } from 'src/dataProvider/repos/push';
 
 import { EditorProps } from './Editor.types';
 
@@ -106,6 +107,20 @@ export const Editor: FunctionComponent<EditorProps> = props => {
         navigator.clipboard.writeText(content);
     }, [content]);
 
+    const onLinkClick = useCallback(() => {
+        navigator.clipboard.writeText(content).then(() => {
+            pushFileContent({
+                user,
+                repo,
+                state,
+                content,
+                filePath,
+                onSuccess: () => console.log('Done'),
+                onError: () => console.log('Error')
+            })
+            window.open(`#${user}/${repo}/${filePath}`, '_self');
+        });
+    }, [content]);
     return (
         <>
             <Navigation user={user} repo={repo} state={state} />
@@ -137,16 +152,14 @@ export const Editor: FunctionComponent<EditorProps> = props => {
                     <button onClick={onButtonClick} className={cx('preview')}>
                         {isPreview ? 'Edit' : 'Preview'}
                     </button>
-                    <a
+                    <Link
+                        to={`/${user}/${repo}/${filePath}`}
                         onMouseEnter={onMouseEnter}
-                        target="_blank"
+                        onClick={onLinkClick}
                         className={cx('edit-link')}
-                        href={`${github(
-                            state
-                        )}/${user}/${repo}/edit/master/${filePath}`}
                     >
                         Save changes
-                    </a>
+                    </Link>
                 </div>
             </div>
         </>
