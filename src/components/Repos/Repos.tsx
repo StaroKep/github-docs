@@ -49,16 +49,18 @@ export const Repos: FunctionComponent<ReposProps> = props => {
 
                 const user = data.get('user') as string;
                 const repo = data.get('repo') as string;
+                const token = data.get('token') as string;
                 const githubDomain = data.get('github-domain');
                 const githubAPIDomain = data.get('github-api-domain');
-
-                if (!user || !repo) {
+                
+                if (!user || !repo || !token) {
                     return;
                 }
 
                 const newRepo: Repository = {
                     user,
                     repo,
+                    token,
                     githubDomain:
                         typeof githubDomain === 'string'
                             ? githubDomain
@@ -111,6 +113,7 @@ export const Repos: FunctionComponent<ReposProps> = props => {
                     const {
                         user,
                         repo: repoName,
+                        token,
                         githubDomain,
                         githubAPIDomain,
                     } = repo;
@@ -145,6 +148,8 @@ export const Repos: FunctionComponent<ReposProps> = props => {
                                 {github}
                                 <br />
                                 {githubApi}
+                                <br />
+                                {token}
                             </div>
                             <Button
                                 type={ButtonType.CIRCLE}
@@ -152,7 +157,7 @@ export const Repos: FunctionComponent<ReposProps> = props => {
                                     syncCacheWithRepo({
                                         user,
                                         repo: repoName,
-                                        state,
+                                        state
                                     });
                                 }}
                             >
@@ -238,6 +243,23 @@ export const Repos: FunctionComponent<ReposProps> = props => {
                         name="github-api-domain"
                         type="url"
                         placeholder="https://api.my-corp.com/"
+                    />
+                </div>
+
+                <div className={inputWrapperClassName}>
+                    <label
+                        className={labelClassName}
+                        htmlFor="add-repos-form_field_github-token"
+                    >
+                        GitHub Auth token:
+                    </label>
+                    <input
+                        id="add-repos-form_field_github-token"
+                        className={inputClassName}
+                        required
+                        name="token"
+                        type="text"
+                        placeholder="aaa777aaa777aaa777aaa777aaa777aaa777aaa7"
                     />
                 </div>
             </form>

@@ -28,7 +28,9 @@ export const Editor: FunctionComponent<EditorProps> = props => {
     const { pathname } = useLocation();
 
     const [isPreview, setIsPreview] = useState(false);
-
+    
+    const token = 'TESTTOKENTESTTOKENTESTTOKENTESTTOKEN'
+   
     const filePath =
         pathname
             .slice(1)
@@ -114,6 +116,7 @@ export const Editor: FunctionComponent<EditorProps> = props => {
                 repo,
                 state,
                 content,
+                token,
                 filePath,
                 onSuccess: () => console.log('Done'),
                 onError: () => console.log('Error')

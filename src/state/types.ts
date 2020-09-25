@@ -7,6 +7,7 @@ export interface GitHubDomains {
 export interface Repository {
     user: string;
     repo: string;
+    token: string;
     githubDomain?: string;
     githubAPIDomain?: string;
 }

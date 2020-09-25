@@ -13,6 +13,7 @@ export function pushFileContent(params: PushParams) {
         repo,
         state,
         content,
+        token,
         filePath,
         onSuccess = () => {},
         onError = () => {},
@@ -22,7 +23,7 @@ export function pushFileContent(params: PushParams) {
         GitHubAPI.CONTENTS
     }/${filePath}`;
 
-    const octokit = new Octokit({ auth: `TOKENTOKENTOKENTOKENTOKENTOKENTOKENTOKEN` })
+    const octokit = new Octokit({ auth: token })
 
     fetch(requestURL)
     .then(result => result.json())
