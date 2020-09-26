@@ -6,8 +6,6 @@ import { GitHubAPI } from 'src/enums/github';
 import { base64encode } from 'src/utils/base64decode';
 
 export function pushFileContent(params: PushParams) {
-    console.log('try')
-
     const {
         user,
         repo,
@@ -39,7 +37,7 @@ export function pushFileContent(params: PushParams) {
           })
           onSuccess()
         }else{
-            onError();
+          onError();
         }
     });
 }

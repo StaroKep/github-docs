@@ -149,7 +149,7 @@ export const Repos: FunctionComponent<ReposProps> = props => {
                                 <br />
                                 {githubApi}
                                 <br />
-                                {token}
+                                {'**********'+token.slice(35)}
                             </div>
                             <Button
                                 type={ButtonType.CIRCLE}
@@ -258,8 +258,8 @@ export const Repos: FunctionComponent<ReposProps> = props => {
                         className={inputClassName}
                         required
                         name="token"
-                        type="text"
-                        placeholder="aaa777aaa777aaa777aaa777aaa777aaa777aaa7"
+                        type="password"
+                        placeholder="a1b2c3d4e5f6g7"
                     />
                 </div>
             </form>

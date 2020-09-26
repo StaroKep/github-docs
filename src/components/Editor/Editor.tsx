@@ -29,8 +29,8 @@ export const Editor: FunctionComponent<EditorProps> = props => {
 
     const [isPreview, setIsPreview] = useState(false);
     
-    const token = 'TESTTOKENTESTTOKENTESTTOKENTESTTOKEN'
-   
+    const token = state.reposList.find(el => (el.repo == repo && el.user == user)).token
+
     const filePath =
         pathname
             .slice(1)
@@ -118,12 +118,12 @@ export const Editor: FunctionComponent<EditorProps> = props => {
                 content,
                 token,
                 filePath,
-                onSuccess: () => console.log('Done'),
-                onError: () => console.log('Error')
+                onSuccess: () => window.open(`#${user}/${repo}/${filePath}`, '_self'),
+                onError: () => alert('Some error here.'),
             })
-            window.open(`#${user}/${repo}/${filePath}`, '_self');
         });
     }, [content]);
+
     return (
         <>
             <Navigation user={user} repo={repo} state={state} />
