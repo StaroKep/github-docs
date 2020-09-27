@@ -53,7 +53,7 @@ export const Repos: FunctionComponent<ReposProps> = props => {
                 const githubDomain = data.get('github-domain');
                 const githubAPIDomain = data.get('github-api-domain');
                 
-                if (!user || !repo || !token) {
+                if (!user || !repo) {
                     return;
                 }
 
@@ -149,7 +149,7 @@ export const Repos: FunctionComponent<ReposProps> = props => {
                                 <br />
                                 {githubApi}
                                 <br />
-                                {'**********'+token.slice(35)}
+                                {token ? '**********'+token.slice(-5) : 'none'}
                             </div>
                             <Button
                                 type={ButtonType.CIRCLE}
@@ -256,7 +256,6 @@ export const Repos: FunctionComponent<ReposProps> = props => {
                     <input
                         id="add-repos-form_field_github-token"
                         className={inputClassName}
-                        required
                         name="token"
                         type="password"
                         placeholder="a1b2c3d4e5f6g7"
