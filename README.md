@@ -7,3 +7,5 @@ Interface for GitHub api ;)
   <span>Вот некоторый текст в выпадающем блоке</span>
   <code>console.log('Вот еще некоторый код!')</code>
 </details>
+
+Hello, world!
