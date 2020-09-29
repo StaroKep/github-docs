@@ -26,10 +26,9 @@ export const Editor: FunctionComponent<EditorProps> = props => {
     const { state } = props;
     const { user, repo } = useParams();
     const { pathname } = useLocation();
+    const { token } = state.reposList.find(el => (el.repo == repo && el.user == user))
 
     const [isPreview, setIsPreview] = useState(false);
-    
-    const token = state.reposList.find(el => (el.repo == repo && el.user == user)).token
 
     const filePath =
         pathname
@@ -105,23 +104,18 @@ export const Editor: FunctionComponent<EditorProps> = props => {
         []
     );
 
-    const onMouseEnter = useCallback(() => {
-        navigator.clipboard.writeText(content);
-    }, [content]);
-
     const onLinkClick = useCallback(() => {
-        navigator.clipboard.writeText(content).then(() => {
-            pushFileContent({
-                user,
-                repo,
-                state,
-                content,
-                token,
-                filePath,
-                onSuccess: () => window.open(`#${user}/${repo}/${filePath}`, '_self'),
-                onError: () => alert('Some error here.'),
-            })
-        });
+        pushFileContent({
+            user,
+            repo,
+            state,
+            content,
+            token,
+            filePath,
+            // TODO: fix in issue-9
+            onSuccess: () => window.open(`#${user}/${repo}/${filePath}`, '_self'),
+            onError: () => alert('Some error here.'),
+        })
     }, [content]);
 
     return (
@@ -156,8 +150,6 @@ export const Editor: FunctionComponent<EditorProps> = props => {
                         {isPreview ? 'Edit' : 'Preview'}
                     </button>
                     <Link
-                        to={`/${user}/${repo}/${filePath}`}
-                        onMouseEnter={onMouseEnter}
                         onClick={onLinkClick}
                         className={cx('edit-link')}
                     >
