@@ -44,21 +44,22 @@
         "ts-loader": "^6.2.2"
     },
     "dependencies": {
+        "@octokit/core": "^3.1.2",
         "@types/lodash": "^4.14.159",
         "classnames": "^2.2.6",
+        "connected-react-router": "^6.8.0",
+        "deox": "^3.2.1",
         "dexie": "^3.0.2",
         "lodash": "^4.17.19",
         "query-string": "6.13.1",
-        "deox": "^3.2.1",
-        "rxjs": "^6.5.5",
-        "redux": "^4.0.5",
         "react": "16.13.1",
         "react-dom": "16.13.1",
-        "react-redux": "^7.2.0",
         "react-icons": "^3.10.0",
         "react-markdown": "^4.3.1",
+        "react-redux": "^7.2.0",
         "react-router-dom": "^5.2.0",
+        "redux": "^4.0.5",
         "redux-observable": "^1.2.0",
-        "connected-react-router": "^6.8.0"
+        "rxjs": "^6.5.5"
     }
 }

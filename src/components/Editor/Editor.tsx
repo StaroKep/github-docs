@@ -10,6 +10,7 @@ import debounce from 'lodash/debounce';
 import { Link, useLocation, useParams } from 'react-router-dom';
 
 import { getFileContent } from 'src/dataProvider/repos/contents';
+import { pushFileContent } from 'src/dataProvider/repos/push';
 
 import { EditorProps } from './Editor.types';
 
@@ -25,6 +26,7 @@ export const Editor: FunctionComponent<EditorProps> = props => {
     const { state } = props;
     const { user, repo } = useParams();
     const { pathname } = useLocation();
+    const { token } = state.reposList.find(el => (el.repo == repo && el.user == user))
 
     const [isPreview, setIsPreview] = useState(false);
 
@@ -102,8 +104,18 @@ export const Editor: FunctionComponent<EditorProps> = props => {
         []
     );
 
-    const onMouseEnter = useCallback(() => {
-        navigator.clipboard.writeText(content);
+    const onLinkClick = useCallback(() => {
+        pushFileContent({
+            user,
+            repo,
+            state,
+            content,
+            token,
+            filePath,
+            // TODO: fix in issue-9
+            onSuccess: () => window.open(`#${user}/${repo}/${filePath}`, '_self'),
+            onError: () => alert('Some error here.'),
+        })
     }, [content]);
 
     return (
@@ -137,16 +149,12 @@ export const Editor: FunctionComponent<EditorProps> = props => {
                     <button onClick={onButtonClick} className={cx('preview')}>
                         {isPreview ? 'Edit' : 'Preview'}
                     </button>
-                    <a
-                        onMouseEnter={onMouseEnter}
-                        target="_blank"
+                    <Link
+                        onClick={onLinkClick}
                         className={cx('edit-link')}
-                        href={`${github(
-                            state
-                        )}/${user}/${repo}/edit/master/${filePath}`}
                     >
                         Save changes
-                    </a>
+                    </Link>
                 </div>
             </div>
         </>

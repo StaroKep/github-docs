@@ -3,6 +3,7 @@ import { ApplicationState } from 'src/state/types';
 export interface CommonServiceParams {
     user: string;
     repo: string;
+    token: string;
     state: ApplicationState;
 }
 
